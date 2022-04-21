@@ -8,8 +8,8 @@ export default defineComponent({
 <script setup>
 import utils from "utils/utils.js";
 import bus from "vue3-eventbus";
-import SongFilter from "components/SongFilter.vue";
-import SongListPagination from "components/SongListPagination.vue";
+import SongFilter from "components/SongFilter/Main.vue";
+import SongListPagination from "components/SongFilter/Pagination.vue";
 
 const loveList = ref(window.AudioLists.love_list);
 const expandList = ref([]);

@@ -73,6 +73,7 @@ const init = () => {
         player.value.playlistAddMany(song_list);
       }
       bus.emit("apply-search-event");
+      bus.emit("refresh-collection");
     })
     .catch((e) => console.log(e));
 };

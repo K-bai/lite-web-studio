@@ -56,6 +56,39 @@ body {
   text-align: center;
   cursor: pointer;
 }
+
+
+.general-button-grey {
+  border: 1px solid #6c757d;
+  color: #6c757d;
+}
+@media (any-hover: hover) {
+  .general-button-grey:hover{
+    background-color: #6c757d;
+    color: white;
+  }
+}
+.general-button-grey:active {
+  background-color: #545b61;
+  color: white;
+}
+
+.general-button-red {
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+@media (any-hover: hover) {
+  .general-button-red:hover{
+    background-color: #dc3545;
+    color: white;
+  }
+}
+.general-button-red:active {
+  background-color: #ab2936;
+  color: white;
+}
+
+
 .general-checkbox {
   width: 1.1rem;
   height: 1.1rem;

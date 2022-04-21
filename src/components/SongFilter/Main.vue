@@ -8,7 +8,9 @@ export default defineComponent({
 <script setup>
 import utils from "utils/utils.js";
 import bus from "vue3-eventbus";
-import ExplainTreatedPopUp from "popup/ExplainTreated.vue";
+import ExplainTreatedPopUp from "../popup/ExplainTreated.vue";
+import SongFilterCollection from "./Collection.vue";
+import SongFilterMyCollection from "./MyCollection.vue";
 
 const props = defineProps({
   songListFiltered: Array,
@@ -17,7 +19,6 @@ const props = defineProps({
 const emit = defineEmits(["update:songListFiltered"]);
 
 const songListOrg = ref(window.AudioLists.song_list);
-const songCollection = ref(window.AudioLists.song_collection);
 const showFilter = ref(false);
 const filters = ref([
   {
@@ -160,13 +161,6 @@ const filterChangeEvent = () => {
   emit("update:songListFiltered", selfSongListFiltered.value);
 };
 
-const replaceCollection = (songList) => {
-  bus.emit(
-    "playlist-replace-event",
-    songList.filter((s) => s.has_audio)
-  );
-  //this.$parent.$parent.$refs.player.playlist_replace();
-};
 
 const searchPressEnter = (event) => {
   applySearch(false);
@@ -186,18 +180,9 @@ onMounted(() => {
 
 <template>
   <div class="c-outer card">
-    <div class="title">歌单</div>
-    <div class="c-song-collection">
-      <div
-        class="collection-item"
-        v-for="collection in songCollection"
-        v-bind:key="collection.name"
-        v-on:click="replaceCollection(collection.list)"
-      >
-        <img src="node_modules/bootstrap-icons/icons/tag.svg?url" />
-        <div>{{ collection.name }}</div>
-      </div>
-    </div>
+    <SongFilterCollection />
+    <hr />
+    <SongFilterMyCollection />
     <hr />
     <div class="title title-filter">
       <div>筛选</div>
